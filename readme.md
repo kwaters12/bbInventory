@@ -19,3 +19,22 @@ Pros:
 
 Cons:
 - Older tool, not as many plugins
+
+Install Jake:
+npm install jake --ignore-scripts --save-dev
+--> Ignores binary scripts + saves changes in packages.json
+
+Run Jake:
+node_modules/.bin/jake
+
+remove temporary files:
+git clean -fdx
+
+Create file - jake.sh:
+1 -> Checks to see if node_modules/.bin/jake exists
+2 -> Runs said file from the command line
+
+Run -> ./jake.sh => Looks for Jake, and if it can't find it rebuilds the packages -> AUTOMATION!!!
+
+Create Jakefile - for managing build
+NEW FILE -> build/scripts/build.jakefile.js
