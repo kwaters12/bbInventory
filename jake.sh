@@ -1,2 +1,2 @@
-[ ! -f node_modules/.bin/jake ] && echo "Building npm modules:" && npm rebuild
-node_modules/.bin/jake -f build/scripts/build.jakefile.js $*
+#!/bin/sh
+. build/scripts/run_jake.sh -f build/scripts/build.jakefile.js $*
