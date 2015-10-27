@@ -10,6 +10,23 @@ Build like this:
 
 './jake.sh' (Unix/Mac) or 'jake.bat' (Windows)
 
+TDD in JavaScript
+
+Front-End Unit Testing
+
+1. Think - What to do next. Minimum amount of code to get to that point. What tests can you do for this?
+2. Red - Write test to fail
+3. Green - Make test pass with minimal code
+4. Refactor
+5. Repeat
+
+Each Test:
+
+1) Arrange - Set Up Test Environment // CREATE DOM ELEMENTS
+2) Act - Run Production Code // RUN PRODUCTION CODE
+3) Assert - Check Results // CHECK DOM ELEMENTS
+4) Reset // ERASE DOM ELEMENTS
+
 1) Use Git - git init
 2) NPM - Build Automation - Options:
 Grunt 
@@ -77,3 +94,8 @@ Git Summary - Continuous Integration:
   git merge dev1 --no-ff
 
 NEW FILE-> ./build/scripts/ci.jakefile.js => Continuous Integration with Git !!! FOR TEAM PROJECTS !!!
+NEW FILE-> ./ci.sh => Shell script that runs the CI buildfile
+
+LINTING
+
+JS Hint -> Nice balance between performance and not being too opinionated
