@@ -1,2 +1,6 @@
 .bin
 generated/
+
+# npm module binaries (built by 'npm rebuild' and similar)
+node_modules/karma/node_modules/chokidar/node_modules/fsevents/build/
+node_modules/karma/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/build/
