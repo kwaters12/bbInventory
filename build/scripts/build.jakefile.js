@@ -5,18 +5,25 @@
   var jshint  = require("simplebuild-jshint");
   var shell = require("shelljs");
 
-
+  var browsers = require("../config/tested_browsers.js");
   var jshintConfig = require("../config/jshint.conf.js");
   var browserify = require("../util/browserify_runner.js");
+  var mocha = require('../util/mocha_runner.js');
   var karma = require("../util/karma_runner.js");
   var paths = require("../config/paths.js");
   
   var KARMA_CONFIG = "./build/config/karma.conf.js";
+  var MOCHA_CONFIG = {
+    ui: "bdd",
+    reporter: "dot"
+  };
 
   var startTime = Date.now();
 
+  var strict = !process.env.loose;
+
   desc("Lint and test");
-  task("default", [ "version", "lint", "build" ], function() {
+  task("default", [ "version", "lint", "test", "build" ], function() {
     var elapsedSeconds = (Date.now() - startTime) / 1000;
     console.log("\n\nBUILD OK (" + elapsedSeconds.toFixed(2) + "s)");
   });
@@ -56,6 +63,16 @@
   task("karma", function() {
     karma.serve(KARMA_CONFIG, complete, fail);
   }, { async: true });
+  
+  desc("Run tests");
+  task("test", function() {
+    console.log("Testing browser code:");
+    karma.runTests({
+      configFile: KARMA_CONFIG,
+      browsers: browsers,
+      strict: false
+    }, complete, fail);    
+  }, {async: true});
 
   //*** BUILD
 
@@ -104,7 +121,7 @@
 
   //*** CREATE DIRECTORIES
   
-  // directory(paths.testDir);
+  directory(paths.testDir);
   // directory(paths.distDir);
   directory(paths.clientDistDir);
 
