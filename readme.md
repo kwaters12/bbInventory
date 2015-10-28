@@ -128,6 +128,23 @@ Either Mocha or Jasmine for the testing language
 expect.js -> One of the few assertion frameworks that runs on IE8
 Chai -> What to use if not supporting IE8!!
 
+npm install commonjs => To tell Karma which code to run (production NOT generated)
+
+INSTALL KARMA + MOCHA + CHAI
+npm install karma --ignore-scripts --save-dev
+npm install karma-chain ...
+
+INITIATE KARMA:
+./node_modules/karma/bin/karma init -> Answers:
+1) mocha
+2) no
+3)
+4)
+5)
+6) no
+
+MOVE FILE => karma.conf.js TO build/config/
+
 
 
 
