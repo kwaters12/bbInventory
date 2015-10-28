@@ -8,8 +8,11 @@
 
   var jshintConfig = require("../config/jshint.conf.js");
   var browserify = require("../util/browserify_runner.js");
+  var karma = require("../util/karma_runner.js");
   var paths = require("../config/paths.js");
   
+  var KARMA_CONFIG = "./build/config/karma.conf.js";
+
   var startTime = Date.now();
 
   desc("Lint and test");
@@ -46,6 +49,15 @@
       globals: jshintConfig.clientGlobals
     }, complete, fail);
   }, { async: true });
+
+  //*** TEST
+
+  desc("Start Karma server -- run this first");
+  task("karma", function() {
+    karma.serve(KARMA_CONFIG, complete, fail);
+  }, { async: true });
+
+  //*** BUILD
 
   desc("Build distribution package");
   task("build", [ "prepDistDir", "buildClient", "buildServer"]);
