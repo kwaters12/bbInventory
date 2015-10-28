@@ -8,6 +8,7 @@
     "jshint": "^2.8.0",
     "object-merge": "^2.5.1",
     "semver": "^5.0.3",
+    "shelljs": "^0.5.3",
     "simplebuild-jshint": "^1.1.0"
   },
   "engines": {

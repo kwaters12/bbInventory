@@ -48,7 +48,7 @@
   desc("Build distribution package");
   task("build", [ "prepDistDir", "buildClient", "buildServer"]);
 
-  task("prepDistDir", function() {
+  task("prepDistDir", [ "generated/dist" ], function() {
 
   });
 
@@ -76,7 +76,8 @@
 
   //*** CREATE DIRECTORIES
 
-  directory(paths.testDir);
-  directory(paths.clientDistDir);
+  directory("generated/dist");
+  // directory(paths.testDir);
+  // directory(paths.clientDistDir);
 
 }());
