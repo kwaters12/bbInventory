@@ -11,7 +11,7 @@
   var startTime = Date.now();
 
   desc("Lint and test");
-  task("default", [ "version", "lint" ], function() {
+  task("default", [ "version", "lint", "build" ], function() {
     var elapsedSeconds = (Date.now() - startTime) / 1000;
     console.log("\n\nBUILD OK (" + elapsedSeconds.toFixed(2) + "s)");
   });
@@ -19,7 +19,7 @@
   desc("Start server (for manual testing)");
   task("run", [ "build" ], function() {
     console.log("Starting server. Press Ctrl-C to exit." );
-    jake.exec("node " + paths.distDir + "/run.js 5000", { interactive: true}, complete)
+    jake.exec("node " + paths.distDir + "/run.js 5000", { interactive: true}, complete);
   }, { async: true });
 
   //*** LINT
@@ -44,6 +44,21 @@
       globals: jshintConfig.clientGlobals
     }, complete, fail);
   }, { async: true });
+
+  desc("Build distribution package");
+  task("build", [ "prepDistDir", "buildClient", "buildServer"]);
+
+  task("prepDistDir", function() {
+
+  });
+
+  task("buildClient", function() {
+    console.log("Copying client code: .");
+  });
+
+  task("buildServer", function() {
+    console.log("Copying sever code: .");
+  });
 
   //*** CHECK VERSION
 
