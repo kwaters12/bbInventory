@@ -114,3 +114,10 @@ FRONTEND MODULARITY
 NEW FILE -> build/config/paths.js => Common PATH vars
 build.jakefile.js -> ADD CREATE DIRECTORIES area
 npm install http-server --ignore-scripts --save-dev
+
+build.jakefile.js -> ADD 'build' task and its dependencies
+ShellJS => For Unix-like file manipulations in Node
+npm install shelljs --ignore-scripts --save-dev
+
+build.jakefile.js => FILL IN => prepDistDir, buildClient, buildServer tasks.
+NEXT:=> Use Browserify to bundle front-end js

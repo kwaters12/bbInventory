@@ -3,9 +3,11 @@
 
   var version = require("../util/version_checker.js");
   var jshint  = require("simplebuild-jshint");
+  var shell = require("shelljs");
 
 
   var jshintConfig = require("../config/jshint.conf.js");
+  var browserify = require("../util/browserify_runner.js");
   var paths = require("../config/paths.js");
   
   var startTime = Date.now();
@@ -48,16 +50,30 @@
   desc("Build distribution package");
   task("build", [ "prepDistDir", "buildClient", "buildServer"]);
 
-  task("prepDistDir", [ "generated/dist" ], function() {
-
+  task("prepDistDir", function() {
+    shell.rm("-rf", paths.distDir);
   });
 
-  task("buildClient", function() {
+  task("buildClient", [ paths.clientDistDir, "bundleClientJs" ], function() {
     console.log("Copying client code: .");
+    shell.cp(paths.clientDir + "/*.html", paths.clientDir + "/*.css", paths.clientDistDir);
   });
+
+  task("bundleClientJs", [ paths.clientDistDir ], function() {
+    console.log("Bundling browser code with browserify: .");
+    browserify.bundle({
+      entry: paths.clientEntryPoint,
+      outfile: paths.clientDistBundle,
+      options: {
+        standalone: "example",
+        debug: true
+      }
+    }, complete, fail);
+  }, { async: true });
 
   task("buildServer", function() {
     console.log("Copying sever code: .");
+    shell.cp("-R", paths.serverDir, paths.serverEntryPoint, paths.distDir);
   });
 
   //*** CHECK VERSION
@@ -75,9 +91,9 @@
   }, { async: true });
 
   //*** CREATE DIRECTORIES
-
-  directory("generated/dist");
+  
   // directory(paths.testDir);
-  // directory(paths.clientDistDir);
+  // directory(paths.distDir);
+  directory(paths.clientDistDir);
 
 }());
