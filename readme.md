@@ -121,3 +121,21 @@ npm install shelljs --ignore-scripts --save-dev
 
 build.jakefile.js => FILL IN => prepDistDir, buildClient, buildServer tasks.
 NEXT:=> Use Browserify to bundle front-end js
+
+TIME FOR TESTING!!!
+Karma - Automate cross-browser testing
+Either Mocha or Jasmine for the testing language
+expect.js -> One of the few assertion frameworks that runs on IE8
+Chai -> What to use if not supporting IE8!!
+
+
+
+
+
+
+
+
+
+
+
+
