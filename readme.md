@@ -99,3 +99,18 @@ NEW FILE-> ./ci.sh => Shell script that runs the CI buildfile
 LINTING
 
 JS Hint -> Nice balance between performance and not being too opinionated
+
+Add 'lint' task to build.jakefile.js
+
+INSTALL -> npm install simplebuild-jshint --ignore-scripts --save-dev
+
+build.jakefile.js -> Add lintNode and lintClient tasks
+
+FRONTEND MODULARITY
+
+- NEW FILES -> src/client/contants.js | src/client/example.js | src/client/index.html | scr/server/server.js | src/run.js
+
+- build.jakefile.js => ADD 'run' task
+NEW FILE -> build/config/paths.js => Common PATH vars
+build.jakefile.js -> ADD CREATE DIRECTORIES area
+npm install http-server --ignore-scripts --save-dev

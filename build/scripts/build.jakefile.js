@@ -2,6 +2,11 @@
   "use strict";
 
   var version = require("../util/version_checker.js");
+  var jshint  = require("simplebuild-jshint");
+
+
+  var jshintConfig = require("../config/jshint.conf.js");
+  var paths = require("../config/paths.js");
   
   var startTime = Date.now();
 
@@ -11,24 +16,40 @@
     console.log("\n\nBUILD OK (" + elapsedSeconds.toFixed(2) + "s)");
   });
 
+  desc("Start server (for manual testing)");
+  task("run", [ "build" ], function() {
+    console.log("Starting server. Press Ctrl-C to exit." );
+    jake.exec("node " + paths.distDir + "/run.js 5000", { interactive: true}, complete)
+  }, { async: true });
+
   //*** LINT
 
   desc("Lint everything");
   task("lint", [ "lintNode", "lintClient" ]);
 
   task("lintNode", function() {
-    console.log("Linting Node.js code:");
-  });
+    process.stdout.write("Linting Node.js code:");
+    jshint.checkFiles({
+      files: [ "build/**/*.js"],
+      options: jshintConfig.nodeOptions,
+      globals: jshintConfig.nodeGlobals
+    }, complete, fail);
+  }, { async: true });
 
   task("lintClient", function() {
     console.log("Linting browser code:");
-  });
+    jshint.checkFiles({
+      files: [ "src/client/**/*.js"],
+      options: jshintConfig.clientOptions,
+      globals: jshintConfig.clientGlobals
+    }, complete, fail);
+  }, { async: true });
 
   //*** CHECK VERSION
 
   desc("Check Node version");
   task("version", function() {
-    console.log("Checking Node.js version: .");
+    process.stdout.write("Checking Node.js version: .");
     version.check({
       name: "Node",
       expected: require("../../package.json").engines.node,
@@ -37,5 +58,10 @@
     }, complete, fail);
 
   }, { async: true });
+
+  //*** CREATE DIRECTORIES
+
+  directory(paths.testDir);
+  directory(paths.clientDistDir);
 
 }());
