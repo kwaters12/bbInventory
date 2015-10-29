@@ -11,11 +11,12 @@
 
 
         // frameworks to use
-        frameworks: ['mocha', 'chai', 'commonjs'],
+        frameworks: ['mocha', 'sinon-chai', 'commonjs'],
 
 
         // list of files / patterns to load in the browser
         files: [
+          'https://code.jquery.com/jquery-2.1.4.min.js',
           'src/client/**/*.js'
         ],
 

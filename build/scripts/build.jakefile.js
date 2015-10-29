@@ -4,6 +4,7 @@
   var version = require("../util/version_checker.js");
   var jshint  = require("simplebuild-jshint");
   var shell = require("shelljs");
+  var sinon = require('sinon');
 
   var browsers = require("../config/tested_browsers.js");
   var jshintConfig = require("../config/jshint.conf.js");
