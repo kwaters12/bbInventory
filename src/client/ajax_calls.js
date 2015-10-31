@@ -2,6 +2,10 @@
   'use strict';
   /*global $:false, jQuery:false */
 
+  exports.initialize = function initialize() {
+
+  };
+
   exports.loadProducts = function loadProducts(category) {
     var categoryUrl = 'http://www.bestbuy.ca/api/v2/json/search?categoryid=' + category;
     $.ajax({
@@ -16,10 +20,8 @@
 
         $('#products').empty();
         for (var i = 0; i < products.length; i++) {
-          $("#products").append('<div class="col-md-4"><div class="product-wrapper"> <img src="http://www.bestbuy.ca/' + products[i].thumbnailImage + '"></div></div>');
-
-        }
-        
+          $("#products").append('<div class="col-md-4"><div class="product-wrapper"' + category + '> <img src="http://www.bestbuy.ca/' + products[i].thumbnailImage + '"></div></div>');
+        }       
         
       }
     });
