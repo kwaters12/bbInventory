@@ -1,3 +1,11 @@
+TO RUN:
+
+1) Clone repo, cd into directory, then type ./jake.sh to install dependencies
+2) ./jake.sh karma => Fire up Karma server to run tests, copy URL given into an open browser tab
+3) ./jake.sh run => Run the node server, which will be accessible at localhost://5000
+
+*Must have Node and Git installed
+
 Dev / Test Plan:
 
 1) Make API call for all categories (AJAX / jQuery) - (Test response of function that makes this call)
