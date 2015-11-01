@@ -14,3 +14,19 @@ Products for all categories: http://www.bestbuy.ca/api/v2/json/search?categoryid
 Product list for category: http://www.bestbuy.ca/api/v2/json/search?categoryid={catid} (e.g. 20001)
 Product details: http://www.bestbuy.ca/api/v2/json/product/{sku} (e.g. 10071404)
 
+TESTS:
+
+Implemented:
+- Loads all categories
+- Loads all products
+
+Not Yet Implemented:
+- Shows proper products when category is clicked
+- Shows proper product in modal when product is clicked
+- Modal closes when overlay is clicked
+
+FEATURES TO ADD:
+- Pagination OR Infinite Scroll
+- Styling
+- Filters (AngularJS)
+
