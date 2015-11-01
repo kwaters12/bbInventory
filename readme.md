@@ -1,7 +1,9 @@
 TO RUN:
 
 1) Clone repo, cd into directory, then type ./jake.sh to install dependencies
+
 2) ./jake.sh karma => Fire up Karma server to run tests, copy URL given into an open browser tab
+
 3) ./jake.sh run => Run the node server, which will be accessible at localhost://5000
 
 *Must have Node and Git installed
@@ -9,8 +11,11 @@ TO RUN:
 Dev / Test Plan:
 
 1) Make API call for all categories (AJAX / jQuery) - (Test response of function that makes this call)
+
 2) Populate DOM nav menu with list of categories - (Test that the DOM is indeed updated)
+
 3) When user clicks on name of category, list all products under that category (AJAX / jQuery) - (Test that the products are actually fetched)
+
 4) When user clicks on product name, open a modal that shows detailed information about that product (Handlebars for modal content) - (Test that modal appears and has accurate content)
 
 API Endpoints:
